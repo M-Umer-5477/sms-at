@@ -48,9 +48,32 @@ console.log(courseId);
         const enrolledStudents = await Enrollment.find({ CourseID: courseId });
    const studentIds = enrolledStudents.map(enrollment => enrollment.StudentID);
         const students = await Student.find({ StudentID: { $in: studentIds } });
-console.log(students);
+console.log('sendind enrolled ' ,students);
         return new Response(JSON.stringify(students), { status: 200 })
     } catch (error) {
         return new Response(JSON.stringify(null), { status: 500 })
     }
+}
+ export async function DELETE(request) {
+    await db.connect();
+    try {
+        const { searchParams } = new URL(request.url);
+        const studentId = searchParams.get('studentId');
+        const courseId = searchParams.get('courseId');
+
+        if (!studentId || !courseId) {
+            return NextResponse.json({ error: 'StudentID and CourseID are required' }, { status: 400 });
+        }
+        const result = await Enrollment.deleteOne({
+            StudentID: studentId,
+            CourseID: courseId
+        });
+
+
+        return NextResponse.json({ message: 'Enrollment deleted successfully' });
+    } catch (err) {
+        console.error(err);
+        return NextResponse.json({ error: 'Failed to delete enrollment' }, { status: 500 });
+    }
+ 
 }
