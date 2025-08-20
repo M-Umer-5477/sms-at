@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
+import StudentSubmissions from '@/components/studentSubmission';
 
 const StudentCoursePage = ({ params }) => {
     const [course, setCourse] = useState({});
@@ -97,6 +98,8 @@ const StudentCoursePage = ({ params }) => {
                         </div>
                     )}
                 </div>
+                {
+                <StudentSubmissions courseID={course.CourseID}/>}
             </div>
         </div>
     );

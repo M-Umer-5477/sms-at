@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { AiOutlineMenu, AiOutlineClose, AiOutlineDown } from "react-icons/ai";
 import { signOut, useSession } from 'next-auth/react';
-import { MdDashboard, MdCourse, MdPerson, MdSettings } from 'react-icons/md';
+import { MdDashboard, MdPerson, MdSettings } from 'react-icons/md';
 import { IoMdLogOut } from 'react-icons/io';
 
 const Navbarr = () => {
@@ -91,7 +91,7 @@ const Navbarr = () => {
                                     {session.user.email.includes('@teacher.com') && (
                                         <li className='relative' ref={dropdownRefs.courses}>
                                             <span onClick={() => toggleDropdown('courses')} className='flex items-center cursor-pointer hover:bg-orange-700 p-2 rounded-md transition-all duration-300'>
-                                                <MdCourse className="mr-2" />
+                                                
                                                 <span className='text-orange-300 text-lg sm:text-xl font-bold hover:text-white'>Courses</span>
                                                 <AiOutlineDown className='ml-2' />
                                             </span>
@@ -114,7 +114,7 @@ const Navbarr = () => {
                                     {session.user.email.includes('@student.com') && (
                                         <li className='relative' ref={dropdownRefs.courses}>
                                             <span onClick={() => toggleDropdown('courses')} className='flex items-center cursor-pointer hover:bg-orange-700 p-2 rounded-md transition-all duration-300'>
-                                                <MdCourse className="mr-2" />
+                                                
                                                 <span className='text-orange-300 text-lg sm:text-xl font-bold hover:text-white'>Courses</span>
                                                 <AiOutlineDown className='ml-2' />
                                             </span>

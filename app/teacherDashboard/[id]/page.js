@@ -4,9 +4,11 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
+import CreateSubmission from '@/components/createSubmission';
 
 const teacherCoursePage = ({ params }) => {
     const [course, setCourse] = useState({});
+    const [submission, setSubmission] = useState(false);
     const router = useRouter();
     const { data: session, status } = useSession();
 
@@ -70,6 +72,11 @@ const teacherCoursePage = ({ params }) => {
                             </button>
                         </Link>
                     </div>
+                    <button className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded transition duration-300" onClick={()=>setSubmission(!submission)}>
+                                Create Submision
+                            </button>
+                            {submission && <CreateSubmission CourseID={course.CourseID} TeacherID={'0000'}/>}
+
                 </div>
             </div>
         </div>

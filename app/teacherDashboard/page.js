@@ -47,7 +47,7 @@ const TeacherDashboard = () => {
     return (
         <div>
        <div className="p-4">
-            <ProfileCard user={teacherData} />
+            <ProfileCard user={teacherData} isStudent={false}/>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {courses.map((course) => (
@@ -57,7 +57,7 @@ const TeacherDashboard = () => {
         >
           <div className="relative w-full h-32">
             <Image
-              src="/course.jpeg"
+              src="/course.jpg"
               alt={course.CourseName}
               layout="fill"
               objectFit="cover"
